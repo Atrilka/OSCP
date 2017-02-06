@@ -1,0 +1,12 @@
+To Start Service type:
+
+service <name_of_service> start
+Ex: 
+service ssh start
+service apache2 start
+
+to check it:
+netstat -antp|grep sshd/apache
+
+also it possible to enable automatically start services after reboot:
+update-rc.d <name_of_service> enable 
