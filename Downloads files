@@ -1,0 +1,4 @@
+Several programm for downloads files from remote machine(localhost)/sites:
+
+wget
+curl -O
