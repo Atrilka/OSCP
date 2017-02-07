@@ -4,20 +4,17 @@ import socket
 import sys
 
 if len(sys.argv) != 2:
-  print "Usage: vrfy.py <username>" sys.exit(0)
+  print "Usage: vrfy.py <username>" 
+  sys.exit(0)
 
-# Create a Socket
-s=socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Connect to the Server connect=s.connect(('IP_address',25))
 
-# Receive the banner
-banner=s.recv(1024)
+s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)   # Create a Socket
+connect=s.connect(('IP_address',25))                  # Connect to the Server
+banner=s.recv(1024)                                   # Receive the banner
 print banner
-
-# VRFY a user
-s.send('VRFY ' + sys.argv[1] + '\r\n') result=s.recv(1024)
+s.send('VRFY ' + sys.argv[1] + '\r\n')                # VRFY a user
+result=s.recv(1024)
 print result
-
-# Close the socket
-s.close()
+s.close()                                             # Close the socket
 
 #for user in $(cat users.txt);do echo VRFY $user |nc -nv -w 1 IP_address 25 2>/dev/null |grep ^"250";done
