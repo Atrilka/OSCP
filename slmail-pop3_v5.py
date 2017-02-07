@@ -1,4 +1,5 @@
-#!/usr/bin/python import socket
+#!/usr/bin/python 
+import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
