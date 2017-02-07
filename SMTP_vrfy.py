@@ -14,11 +14,11 @@ banner=s.recv(1024)                                   # Receive the banner
 print banner
 with open(sys.argv[2]) as a:
 	for line in a:
-		s.send('VRFY ' + line + '\r')			                # VRFY a user
+		s.send('VRFY ' + line + '\r')	      # VRFY a user
 		result=s.recv(1024)
 		print result
 		if 'str' in line:
 			break
-s.close()		                                          # Close the socket
+s.close()		                              # Close the socket
                                           
 #for user in $(cat users.txt);do echo VRFY $user |nc -nv -w 1 IP_address 25 2>/dev/null |grep ^"250";done
