@@ -1,0 +1,3 @@
+tail -f /var/log/apache2/access.log
+
+By default, tail will output the last 10 lines of its input to the standard output. With command line options, the amount of output and the units (lines, blocks or bytes) may be changed.
